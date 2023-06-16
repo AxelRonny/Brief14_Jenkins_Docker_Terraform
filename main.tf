@@ -1,6 +1,11 @@
 resource "azurerm_resource_group" "webserver" {
-   name = "brief14-axel-${var.environment}"
+   name = "ar-jenkins-server"
    location = var.location
+}
+# Connect the security group to the network interface
+resource "azurerm_network_interface_security_group_association" "webserver" {
+  network_interface_id      = azurerm_network_interface.webserver.id
+  network_security_group_id = azurerm_network_security_group.allowedports.id
 }
 
 resource "azurerm_network_security_group" "allowedports" {
@@ -60,7 +65,7 @@ resource "azurerm_public_ip" "webserver_public_ip" {
 }
 
 resource "azurerm_network_interface" "webserver" {
-   name = "brief14-interface"
+   name = "jenkins-interface"
    location = azurerm_resource_group.webserver.location
    resource_group_name = azurerm_resource_group.webserver.name
 
@@ -74,9 +79,9 @@ resource "azurerm_network_interface" "webserver" {
    depends_on = [azurerm_resource_group.webserver]
 }
 
-resource "azurerm_linux_virtual_machine" "Brief14" {
+resource "azurerm_linux_virtual_machine" "jenkins" {
    size = var.instance_size
-   name = "brief14-axelwebserver"
+   name = "jenkins-webserver"
    resource_group_name = azurerm_resource_group.webserver.name
    location = azurerm_resource_group.webserver.location
    custom_data = base64encode(file("init-script.sh"))
@@ -87,17 +92,17 @@ resource "azurerm_linux_virtual_machine" "Brief14" {
    source_image_reference {
        publisher = "Canonical"
        offer = "UbuntuServer"
-       sku = "18.04-LTS"
+       sku = "20.04-LTS"
        version = "latest"
    }
 
-   computer_name = "brief14"
-   admin_username = "axel"
-   admin_password = "Ronnyand2002@yahoo.fr"
+   computer_name = "jenkins"
+   admin_username = "adminuserar"
+   admin_password = "ronnyand2002@yahoo.fr"
    disable_password_authentication = false
 
    os_disk {
-       name = "brief14disk01"
+       name = "jenkinsdisk01"
        caching = "ReadWrite"
        #create_option = "FromImage"
        storage_account_type = "Standard_LRS"
