@@ -1,10 +1,10 @@
-    pipeline {
+ pipeline {
     agent any
     
     stages {
         stage('git') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AxelRonny/Brief14_Jenkins_Docker_Terraform']])
+                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AxelRonny/Brief14_Jenkins_Docker_Terraform']])
             }
         }
         
@@ -34,7 +34,7 @@
         
         stage('Terraform init') {
             steps {
-                azureCLI commands: [[exportVariablesString: '', script: 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID']], principalCredentialId: 'AxelAzure'
+		        azureCLI commands: [[exportVariablesString: '', script: 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID']], principalCredentialId: 'AxelAzure'
                 sh "terraform init"
             }
         }
