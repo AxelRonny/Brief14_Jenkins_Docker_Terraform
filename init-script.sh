@@ -8,4 +8,4 @@ sudo usermod -aG docker $USER
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 #Creating container
-sudo docker run -d -p 8080:1234 --name axelcontainer axelronny/axel1
+sudo docker run -d -p 8080:1234 --name axelcontainer axelronny/axel2
