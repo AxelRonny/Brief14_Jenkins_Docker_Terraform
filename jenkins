@@ -4,7 +4,7 @@
     stages {
         stage('git') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/MohamedM97/Brief14']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AxelRonny/Brief14_Jenkins_Docker_Terraform']])
             }
         }
         
@@ -16,19 +16,19 @@
         
         stage ('Docker Build') {
             steps {
-                sh 'cd image && docker build -t mohamed .'
+                sh 'cd image && docker build -t axel1 .'
             }    
         }
 
         stage ('Docker Tag') {
             steps {
-                sh 'docker tag mohamed:latest mohamed976/mohamed:latest'
+                sh 'docker tag axel1:latest axelronny/axel1:latest'
             }
         }
 
         stage ('Docker Push') {
             steps {
-                sh 'docker push mohamed976/mohamed:latest '
+                sh 'docker push axelronny/axel1:latest '
             }
         } 
         
