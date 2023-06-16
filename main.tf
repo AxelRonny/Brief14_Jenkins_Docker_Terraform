@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "webserver" {
-   name = "brief14-mm-${var.environment}"
+   name = "brief14-axel-${var.environment}"
    location = var.location
 }
 
@@ -76,7 +76,7 @@ resource "azurerm_network_interface" "webserver" {
 
 resource "azurerm_linux_virtual_machine" "Brief14" {
    size = var.instance_size
-   name = "brief14-mmwebserver"
+   name = "brief14-axelwebserver"
    resource_group_name = azurerm_resource_group.webserver.name
    location = azurerm_resource_group.webserver.location
    custom_data = base64encode(file("init-script.sh"))
@@ -92,8 +92,8 @@ resource "azurerm_linux_virtual_machine" "Brief14" {
    }
 
    computer_name = "brief14"
-   admin_username = "mohamed"
-   admin_password = "Mohameddu976"
+   admin_username = "axel"
+   admin_password = "Ronnyand2002@yahoo.fr"
    disable_password_authentication = false
 
    os_disk {
