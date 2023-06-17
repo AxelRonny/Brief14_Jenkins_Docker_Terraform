@@ -92,12 +92,12 @@ resource "azurerm_linux_virtual_machine" "Brief14" {
    }
 
    computer_name = "ronny-brief14"
-   admin_username = "axel"
+   admin_username = "axeldenyro"
    admin_password = "Ronnyand2002@yahoo.fr"
    disable_password_authentication = false
 
    os_disk {
-       name = "brief14disk01"
+       name = "brief14-disk01"
        caching = "ReadWrite"
        #create_option = "FromImage"
        storage_account_type = "Standard_LRS"
