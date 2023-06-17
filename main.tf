@@ -87,11 +87,11 @@ resource "azurerm_linux_virtual_machine" "Brief14" {
    source_image_reference {
        publisher = "Canonical"
        offer = "UbuntuServer"
-       sku = "18.04-LTS"
+       sku = "20.04-LTS"
        version = "latest"
    }
 
-   computer_name = "brief14"
+   computer_name = "ronny-brief14"
    admin_username = "axel"
    admin_password = "Ronnyand2002@yahoo.fr"
    disable_password_authentication = false
