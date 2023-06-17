@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "webserver" {
-   name = "brief14-ara-${var.environment}"
+   name = "Brief14-ARA-${var.environment}"
    location = var.location
 }
 
